@@ -1,0 +1,5 @@
+# CMake build directories
+build/
+build-tsan/
+# OS generated files
+.DS_Store
