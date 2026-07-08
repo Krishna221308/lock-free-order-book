@@ -152,10 +152,11 @@ namespace lob {
                 if (node->left != nullptr && node->right != nullptr) {
                     T* succ = successor(node);
                     transplant_value_holder(node, succ);
-                    node = succ;
                 }
-                T* child = (node->left != nullptr) ? node->left : node->right;
-                replace_in_parent(node, child);
+                else {
+                    T* child = (node->left != nullptr) ? node->left : node->right;
+                    replace_in_parent(node, child);
+                }
                 node->left = nullptr;
                 node->right = nullptr;
                 node->parent = nullptr;

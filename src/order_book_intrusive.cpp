@@ -42,7 +42,7 @@ namespace lob {
         if (it == id_index_.end()) return;
 
         IntrusiveOrder* intrusive_order = it->second;
-        Limit* limit = limit_index_(intrusive_order->price);
+        Limit* limit = limit_index_[intrusive_order->price];
         Side order_side = intrusive_order->side;
 
         limit->orders.remove(intrusive_order);
@@ -70,13 +70,13 @@ namespace lob {
         intrusive_order->quantity = new_quantity;
 
         // It loses time priority due to modification.
-        Limit* limit = limit_index_(intrusive_order->price);
+        Limit* limit = limit_index_[intrusive_order->price];
         limit->orders.remove(intrusive_order);
         limit->orders.push_back(intrusive_order);
     }
 
     void IntrusiveOrderBook::match() {
-        while (!bids_.empty() && !asks.empty()) {
+        while (!bids_.empty() && !asks_.empty()) {
             Limit* best_bid_limit = bids_.max_node();
             Limit* best_ask_limit = asks_.min_node();
             
@@ -95,13 +95,13 @@ namespace lob {
         }
     }
 
-    std::optimal<int64_t> IntrusiveOrderBook::best_bid() const {
+    std::optional<int64_t> IntrusiveOrderBook::best_bid() const {
         Limit* max_bid = bids_.max_node();
         if (max_bid != nullptr) return max_bid->price;
         return std::nullopt;
     }
 
-    std::optimal<int64_t> IntrusiveOrderBook::best_ask() const {
+    std::optional<int64_t> IntrusiveOrderBook::best_ask() const {
         Limit* min_ask = asks_.min_node();
         if (min_ask != nullptr) return min_ask->price;
         return std::nullopt;

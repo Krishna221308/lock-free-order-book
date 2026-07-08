@@ -102,10 +102,10 @@ namespace lob {
                     explicit reverse_iterator(T* node) : node_(node) {}
                     T* operator*() const { return node_; }
                     reverse_iterator& operator++() {
-                        node_ = node->prev;
+                        node_ = node_->prev;
                         return *this;
                     }
-                    bool operator!=(const reverse_iterator& other) const { return node_ != other.node; }
+                    bool operator!=(const reverse_iterator& other) const { return node_ != other.node_; }
 
                 private:
                     T* node_;
