@@ -4,6 +4,7 @@
 #include "lob/intrusive_bst.hpp"
 #include "lob/intrusive_order.hpp"
 #include "lob/limit.hpp"
+#include "lob/pool_allocator.hpp"
 #include <unordered_map>
 #include <optional>
 
@@ -14,6 +15,9 @@ namespace lob {
             IntrusiveBST<Limit, int64_t, LimitKeyOf> asks_;
             std::unordered_map<uint64_t, IntrusiveOrder*> id_index_;
             std::unordered_map<int64_t, Limit*> limit_index_;
+
+            ObjectPool<IntrusiveOrder> order_pool_{1000000};  // Pool for 1M orders.
+            ObjectPool<Limit> limit_pool_{10000};             // Pool for 10K prices
 
         public:
             IntrusiveOrderBook() = default;

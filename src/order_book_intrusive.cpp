@@ -3,8 +3,8 @@
 
 namespace lob {
     IntrusiveOrderBook::~IntrusiveOrderBook() {
-        for (auto& pair : id_index_) delete pair.second;
-        for (auto& pair : limit_index_) delete pair.second;
+        for (auto& pair : id_index_) order_pool_.release(pair.second);
+        for (auto& pair : limit_index_) limit_pool_.release(pair.second);
     }
 
     void IntrusiveOrderBook::add_order(const Order& order) {
@@ -15,7 +15,7 @@ namespace lob {
             limit = limit_it->second;
         }
         else {
-            limit = new Limit();
+            limit = limit_pool_.acquire();
             limit->price = order.price;
             limit_index_[order.price] = limit;
 
@@ -26,7 +26,7 @@ namespace lob {
                 asks_.insert(limit);
             }
         }
-        IntrusiveOrder* intrusive_order = new IntrusiveOrder();
+        IntrusiveOrder* intrusive_order = order_pool_.acquire();
         intrusive_order->id = order.id;
         intrusive_order->side = order.side;
         intrusive_order->price = order.price;
@@ -47,13 +47,13 @@ namespace lob {
 
         limit->orders.remove(intrusive_order);
         id_index_.erase(id);
-        delete intrusive_order;
+        order_pool_.release(intrusive_order);
 
         if (limit->orders.empty()) {
             if (order_side == Side::Buy) bids_.remove(limit);
             else asks_.remove(limit);
             limit_index_.erase(limit->price);
-            delete limit;
+            limit_pool_.release(limit);
         }
     }
 

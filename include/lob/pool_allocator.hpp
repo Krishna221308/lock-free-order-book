@@ -13,7 +13,7 @@ namespace lob {
                 alignas(T) unsigned char storage[sizeof(T)];
             };
 
-            Slot* slot_ad(std::size_t i) { return storage_ + i; }
+            Slot* slot_at(std::size_t i) { return storage_ + i; }
             
             Slot* storage_ = nullptr;
             Slot* free_head_ = nullptr;
@@ -52,11 +52,11 @@ namespace lob {
             }
 
             void release(T* obj) {
-                assert(obj != nullptr) 
+                assert(obj != nullptr);
                 obj->~T();
                 Slot* slot = reinterpret_cast<Slot*>(obj);
                 slot->next_free = free_head_;
-                free_head_ = slor;
+                free_head_ = slot;
                 --live_count_;                
             }
 

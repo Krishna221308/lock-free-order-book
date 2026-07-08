@@ -1,0 +1,1215 @@
+desc: (none)
+cmd: ./build/bench_book_backend
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=45988312
+mem_heap_B=2192960
+mem_heap_extra_B=209784
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=86877788
+mem_heap_B=4164816
+mem_heap_extra_B=400632
+mem_stacks_B=0
+heap_tree=detailed
+n6: 4164816 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1848000 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1848000 0x4007882: allocate (allocator.h:203)
+   n1: 1848000 0x4007882: allocate (alloc_traits.h:614)
+    n2: 1848000 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 1847520 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 1847520 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 1847520 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 1847520 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 1847520 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 1478208 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1478208 0x4009A25: allocate (allocator.h:203)
+   n1: 1478208 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 1478208 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 1478208 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 1478208 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 1478208 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 1478208 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 1478208 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 1478208 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 681832 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 681832 0x400B166: allocate (allocator.h:203)
+   n1: 681832 0x400B166: allocate (alloc_traits.h:614)
+    n1: 681832 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 681832 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 681832 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 681832 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 681832 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 681832 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 681832 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 681832 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 681832 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 81904 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 81904 0x400A93F: allocate (allocator.h:203)
+   n1: 81904 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 81904 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 81904 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 81904 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 81904 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 81904 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 81904 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 81904 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 81904 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 73728 0x49496CE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.34)
+  n1: 73728 0x40201E6: call_init (dl-init.c:74)
+   n1: 73728 0x40201E6: call_init (dl-init.c:26)
+    n1: 73728 0x40202BC: _dl_init (dl-init.c:121)
+     n0: 73728 0x4038B1F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n0: 1144 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=146705811
+mem_heap_B=7047824
+mem_heap_extra_B=737816
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=198120429
+mem_heap_B=9552400
+mem_heap_extra_B=954824
+mem_stacks_B=0
+heap_tree=detailed
+n5: 9552400 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4405920 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 4405920 0x4007882: allocate (allocator.h:203)
+   n1: 4405920 0x4007882: allocate (alloc_traits.h:614)
+    n2: 4405920 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 4405440 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 4405440 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 4405440 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 4405440 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 4405440 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 3524320 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 3524320 0x4009A25: allocate (allocator.h:203)
+   n1: 3524320 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 3524320 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 3524320 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 3524320 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 3524320 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 3524320 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 3524320 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 3524320 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 1383464 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1383464 0x400B166: allocate (allocator.h:203)
+   n1: 1383464 0x400B166: allocate (alloc_traits.h:614)
+    n1: 1383464 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 1383464 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 1383464 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 1383464 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 1383464 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 1383464 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 1383464 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 1383464 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 1383464 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 163824 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 163824 0x400A93F: allocate (allocator.h:203)
+   n1: 163824 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 163824 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 163824 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 163824 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 163824 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 163824 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 163824 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 163824 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 163824 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=268803431
+mem_heap_B=12864432
+mem_heap_extra_B=1353536
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=320982169
+mem_heap_B=17046136
+mem_heap_extra_B=1499112
+mem_stacks_B=0
+heap_tree=detailed
+n5: 17046136 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 6917760 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 6917760 0x4007882: allocate (allocator.h:203)
+   n1: 6917760 0x4007882: allocate (alloc_traits.h:614)
+    n2: 6917760 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 6917280 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 6917280 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 6917280 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 6917280 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 6917280 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 5533888 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 5533888 0x4009A25: allocate (allocator.h:203)
+   n1: 5533888 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 5533888 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 5533888 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 5533888 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 5533888 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 5533888 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 5533888 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 5533888 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 4191952 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 4191952 0x400B166: allocate (allocator.h:203)
+   n1: 4191952 0x400B166: allocate (alloc_traits.h:614)
+    n1: 4191952 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 4191952 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 4191952 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 4191952 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 4191952 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 4191952 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 4191952 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 4191952 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 4191952 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 327664 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 327664 0x400A93F: allocate (allocator.h:203)
+   n1: 327664 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 327664 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 327664 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 327664 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 327664 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 327664 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 327664 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 327664 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 327664 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=7
+#-----------
+time=393920177
+mem_heap_B=19080688
+mem_heap_extra_B=1910576
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=442877927
+mem_heap_B=21374768
+mem_heap_extra_B=2186736
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=513749755
+mem_heap_B=24695984
+mem_heap_extra_B=2586512
+mem_stacks_B=0
+heap_tree=detailed
+n5: 24695984 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 11936160 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 11936160 0x4007882: allocate (allocator.h:203)
+   n1: 11936160 0x4007882: allocate (alloc_traits.h:614)
+    n2: 11936160 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 11935680 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 11935680 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 11935680 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 11935680 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 11935680 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 9548800 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 9548800 0x4009A25: allocate (allocator.h:203)
+   n1: 9548800 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 9548800 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 9548800 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 9548800 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 9548800 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 9548800 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 9548800 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 9548800 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 2808488 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 2808488 0x400B166: allocate (allocator.h:203)
+   n1: 2808488 0x400B166: allocate (alloc_traits.h:614)
+    n1: 2808488 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 2808488 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 2808488 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 2808488 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 2808488 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 2808488 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 2808488 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 2808488 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 2808488 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 327664 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 327664 0x400A93F: allocate (allocator.h:203)
+   n1: 327664 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 327664 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 327664 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 327664 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 327664 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 327664 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 327664 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 327664 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 327664 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=10
+#-----------
+time=591651861
+mem_heap_B=28664336
+mem_heap_extra_B=3024728
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=648202955
+mem_heap_B=34517144
+mem_heap_extra_B=3047032
+mem_stacks_B=0
+heap_tree=detailed
+n5: 34517144 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 14042880 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 14042880 0x4007882: allocate (allocator.h:203)
+   n1: 14042880 0x4007882: allocate (alloc_traits.h:614)
+    n2: 14042880 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 14042400 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 14042400 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 14042400 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 14042400 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 14042400 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 11233984 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 11233984 0x4009A25: allocate (allocator.h:203)
+   n1: 11233984 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 11233984 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 11233984 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 11233984 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 11233984 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 11233984 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 11233984 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 11233984 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 8510064 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 8510064 0x400B166: allocate (allocator.h:203)
+   n1: 8510064 0x400B166: allocate (alloc_traits.h:614)
+    n1: 8510064 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 8510064 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 8510064 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 8510064 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 8510064 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 8510064 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 8510064 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 8510064 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 8510064 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 655344 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 655344 0x400A93F: allocate (allocator.h:203)
+   n1: 655344 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 655344 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 655344 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 655344 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 655344 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 655344 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 655344 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 655344 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 655344 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=12
+#-----------
+time=708171836
+mem_heap_B=34518640
+mem_heap_extra_B=3385320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=740882027
+mem_heap_B=36051888
+mem_heap_extra_B=3569832
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=792246059
+mem_heap_B=38458512
+mem_heap_extra_B=3859568
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=856984779
+mem_heap_B=41492624
+mem_heap_extra_B=4224752
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=905538418
+mem_heap_B=43767728
+mem_heap_extra_B=4498632
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=978369024
+mem_heap_B=47181072
+mem_heap_extra_B=4909456
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=1035015457
+mem_heap_B=49835472
+mem_heap_extra_B=5228992
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1116161975
+mem_heap_B=54928096
+mem_heap_extra_B=5684256
+mem_stacks_B=0
+heap_tree=detailed
+n5: 54928096 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 26214240 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 26214240 0x4007882: allocate (allocator.h:203)
+   n1: 26214240 0x4007882: allocate (alloc_traits.h:614)
+    n2: 26214240 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 26213760 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 26213760 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 26213760 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 26213760 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 26213760 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 20971360 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 20971360 0x4009A25: allocate (allocator.h:203)
+   n1: 20971360 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 20971360 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 20971360 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 20971360 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 20971360 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 20971360 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 20971360 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 20971360 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 5701576 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 5701576 0x400B166: allocate (allocator.h:203)
+   n1: 5701576 0x400B166: allocate (alloc_traits.h:614)
+    n1: 5701576 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 5701576 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 5701576 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 5701576 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 5701576 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 5701576 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 5701576 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 5701576 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 5701576 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 1966048 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1966048 0x400A93F: allocate (allocator.h:203)
+   n1: 1966048 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 1966048 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 1966048 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 1966048 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 1966048 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 1966048 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 1966048 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 1966048 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 1966048 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=20
+#-----------
+time=1194074008
+mem_heap_B=57923984
+mem_heap_extra_B=6123776
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1312515131
+mem_heap_B=69978872
+mem_heap_extra_B=6183368
+mem_stacks_B=0
+heap_tree=detailed
+n5: 69978872 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 28508160 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 28508160 0x4007882: allocate (allocator.h:203)
+   n1: 28508160 0x4007882: allocate (alloc_traits.h:614)
+    n2: 28508160 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 28507680 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 28507680 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 28507680 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 28507680 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 28507680 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 22806336 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 22806336 0x4009A25: allocate (allocator.h:203)
+   n1: 22806336 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 22806336 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 22806336 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 22806336 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 22806336 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 22806336 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 22806336 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 22806336 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 17278800 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 17278800 0x400B166: allocate (allocator.h:203)
+   n1: 17278800 0x400B166: allocate (alloc_traits.h:614)
+    n1: 17278800 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 17278800 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 17278800 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 17278800 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 17278800 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 17278800 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 17278800 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 17278800 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 17278800 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 1310704 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1310704 0x400A93F: allocate (allocator.h:203)
+   n1: 1310704 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 1310704 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 1310704 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 1310704 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 1310704 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 1310704 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 1310704 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 1310704 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 1310704 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=22
+#-----------
+time=1362448272
+mem_heap_B=66617136
+mem_heap_extra_B=6460936
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1399898729
+mem_heap_B=68372496
+mem_heap_extra_B=6672192
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1449832137
+mem_heap_B=70712336
+mem_heap_extra_B=6953856
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1499765545
+mem_heap_B=73052176
+mem_heap_extra_B=7235520
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1574666058
+mem_heap_B=76562416
+mem_heap_extra_B=7658024
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1624599466
+mem_heap_B=78902256
+mem_heap_extra_B=7939688
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1687016173
+mem_heap_B=81827504
+mem_heap_extra_B=8291768
+mem_stacks_B=0
+heap_tree=detailed
+n5: 81827504 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 38258400 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 38258400 0x4007882: allocate (allocator.h:203)
+   n1: 38258400 0x4007882: allocate (alloc_traits.h:614)
+    n2: 38258400 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 38257920 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 38257920 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 38257920 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 38257920 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 38257920 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 30606304 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 30606304 0x4009A25: allocate (allocator.h:203)
+   n1: 30606304 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 30606304 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 30606304 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 30606304 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 30606304 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 30606304 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 30606304 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 30606304 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 11577224 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 11577224 0x400B166: allocate (allocator.h:203)
+   n1: 11577224 0x400B166: allocate (alloc_traits.h:614)
+    n1: 11577224 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 11577224 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 11577224 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 11577224 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 11577224 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 11577224 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 11577224 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 11577224 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 11577224 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 1310704 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1310704 0x400A93F: allocate (allocator.h:203)
+   n1: 1310704 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 1310704 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 1310704 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 1310704 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 1310704 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 1310704 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 1310704 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 1310704 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 1310704 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=1753931612
+mem_heap_B=84963120
+mem_heap_extra_B=8669224
+mem_stacks_B=0
+heap_tree=detailed
+n5: 84963120 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 40000320 0x400AF7B: std::__new_allocator<lob::Order>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 40000320 0x4007882: allocate (allocator.h:203)
+   n1: 40000320 0x4007882: allocate (alloc_traits.h:614)
+    n2: 40000320 0x4007882: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_node() (stl_deque.h:586)
+     n1: 39999840 0x4006243: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:497)
+      n1: 39999840 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+       n1: 39999840 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+        n1: 39999840 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+         n0: 39999840 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 480 in 1 place, below massif's threshold (1.00%)
+ n1: 32000000 0x400B729: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 32000000 0x4009A25: allocate (allocator.h:203)
+   n1: 32000000 0x4009A25: allocate (alloc_traits.h:614)
+    n1: 32000000 0x4009A25: std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 32000000 0x4007FDA: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 32000000 0x400654D: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 32000000 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 32000000 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+         n1: 32000000 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+          n0: 32000000 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 11577224 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 11577224 0x400B166: allocate (allocator.h:203)
+   n1: 11577224 0x400B166: allocate (alloc_traits.h:614)
+    n1: 11577224 0x400B166: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 11577224 0x400AC2A: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 11577224 0x4009CAC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 11577224 0x40080A9: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::OrderBook::IndexEntry>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 11577224 0x400656B: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::OrderBook::IndexEntry>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 11577224 0x4005B32: std::unordered_map<unsigned long, lob::OrderBook::IndexEntry, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::OrderBook::IndexEntry> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 11577224 0x40046F5: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:13)
+           n1: 11577224 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+            n0: 11577224 0x400261A: main (bench_book_backend.cpp:30)
+ n1: 1310704 0x400BDF1: std::__new_allocator<lob::Order*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 1310704 0x400A93F: allocate (allocator.h:203)
+   n1: 1310704 0x400A93F: allocate (alloc_traits.h:614)
+    n2: 1310704 0x400A93F: std::_Deque_base<lob::Order, std::allocator<lob::Order> >::_M_allocate_map(unsigned long) (stl_deque.h:600)
+     n1: 1310704 0x4009309: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reallocate_map(unsigned long, bool) (deque.tcc:1133)
+      n1: 1310704 0x40077D0: std::deque<lob::Order, std::allocator<lob::Order> >::_M_reserve_map_at_back(unsigned long) (stl_deque.h:2285)
+       n1: 1310704 0x400622B: void std::deque<lob::Order, std::allocator<lob::Order> >::_M_push_back_aux<lob::Order const&>(lob::Order const&) (deque.tcc:496)
+        n1: 1310704 0x40059EB: std::deque<lob::Order, std::allocator<lob::Order> >::push_back(lob::Order const&) (stl_deque.h:1615)
+         n1: 1310704 0x40046A3: lob::OrderBook::add_order(lob::Order const&) (order_book_stl.cpp:8)
+          n1: 1310704 0x4002367: main::{lambda()#1}::operator()() const (bench_book_backend.cpp:13)
+           n0: 1310704 0x400261A: main (bench_book_backend.cpp:30)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 74872 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=30
+#-----------
+time=1803863028
+mem_heap_B=76684304
+mem_heap_extra_B=6599520
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=1853794444
+mem_heap_B=68405520
+mem_heap_extra_B=4529728
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=1917025490
+mem_heap_B=57921616
+mem_heap_extra_B=1908480
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=1955290860
+mem_heap_B=7093256
+mem_heap_extra_B=95168
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=1998685700
+mem_heap_B=56634752
+mem_heap_extra_B=480
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=2058889410
+mem_heap_B=57750864
+mem_heap_extra_B=520368
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=2119777820
+mem_heap_B=58888856
+mem_heap_extra_B=1048720
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=2164894001
+mem_heap_B=60063864
+mem_heap_extra_B=1364304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=2241426779
+mem_heap_B=61190040
+mem_heap_extra_B=2115104
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=2279693301
+mem_heap_B=61753128
+mem_heap_extra_B=2490496
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=2334206532
+mem_heap_B=63593784
+mem_heap_extra_B=2767584
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=2410739310
+mem_heap_B=64719960
+mem_heap_extra_B=3518400
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=2487272354
+mem_heap_B=65846136
+mem_heap_extra_B=4269184
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=2563805398
+mem_heap_B=66972312
+mem_heap_extra_B=5019968
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=2621205181
+mem_heap_B=67816944
+mem_heap_extra_B=5583056
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=2678056149
+mem_heap_B=70761944
+mem_heap_extra_B=5621744
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=2754588927
+mem_heap_B=71888120
+mem_heap_extra_B=6372528
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=2831121971
+mem_heap_B=73014296
+mem_heap_extra_B=7123328
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=2869388493
+mem_heap_B=73577384
+mem_heap_extra_B=7498720
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=2926788276
+mem_heap_B=74422016
+mem_heap_extra_B=8061808
+mem_stacks_B=0
+heap_tree=detailed
+n4: 74422016 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 56000000 0x4002D82: lob::ObjectPool<lob::IntrusiveOrder>::ObjectPool(unsigned long) (pool_allocator.hpp:25)
+  n1: 56000000 0x4002CC5: lob::IntrusiveOrderBook::IntrusiveOrderBook() (order_book_intrusive.hpp:23)
+   n1: 56000000 0x4002462: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:20)
+    n0: 56000000 0x4002662: main (bench_book_backend.cpp:31)
+ n1: 12085560 0x4010796: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 12085560 0x400F920: allocate (allocator.h:203)
+   n1: 12085560 0x400F920: allocate (alloc_traits.h:614)
+    n1: 12085560 0x400F920: std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 12085560 0x400E7F6: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 12085560 0x400DE01: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 12085560 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 12085560 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+         n1: 12085560 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+          n0: 12085560 0x4002662: main (bench_book_backend.cpp:31)
+ n2: 5701680 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 5701576 0x4010606: allocate (allocator.h:203)
+   n1: 5701576 0x4010606: allocate (alloc_traits.h:614)
+    n1: 5701576 0x4010606: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 5701576 0x40101EC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 5701576 0x400FB38: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 5701576 0x400E8C5: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 5701576 0x400DE1F: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 5701576 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 5701576 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+           n1: 5701576 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+            n0: 5701576 0x4002662: main (bench_book_backend.cpp:31)
+  n0: 104 in 2 places, all below massif's threshold (1.00%)
+ n0: 634776 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=50
+#-----------
+time=2959499612
+mem_heap_B=74903360
+mem_heap_extra_B=8382704
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=2992210948
+mem_heap_B=75384704
+mem_heap_extra_B=8703600
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=3024922284
+mem_heap_B=75866048
+mem_heap_extra_B=9024496
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=3057633620
+mem_heap_B=76347392
+mem_heap_extra_B=9345392
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=3090344956
+mem_heap_B=76828736
+mem_heap_extra_B=9666288
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=3123056292
+mem_heap_B=77310080
+mem_heap_extra_B=9987184
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=3155767628
+mem_heap_B=77791424
+mem_heap_extra_B=10308080
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=3188478964
+mem_heap_B=78272768
+mem_heap_extra_B=10628976
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=3221190300
+mem_heap_B=78754112
+mem_heap_extra_B=10949872
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=3253901636
+mem_heap_B=79235456
+mem_heap_extra_B=11270768
+mem_stacks_B=0
+heap_tree=detailed
+n4: 79235456 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 56000000 0x4002D82: lob::ObjectPool<lob::IntrusiveOrder>::ObjectPool(unsigned long) (pool_allocator.hpp:25)
+  n1: 56000000 0x4002CC5: lob::IntrusiveOrderBook::IntrusiveOrderBook() (order_book_intrusive.hpp:23)
+   n1: 56000000 0x4002462: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:20)
+    n0: 56000000 0x4002662: main (bench_book_backend.cpp:31)
+ n1: 16899000 0x4010796: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 16899000 0x400F920: allocate (allocator.h:203)
+   n1: 16899000 0x400F920: allocate (alloc_traits.h:614)
+    n1: 16899000 0x400F920: std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 16899000 0x400E7F6: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 16899000 0x400DE01: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 16899000 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 16899000 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+         n1: 16899000 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+          n0: 16899000 0x4002662: main (bench_book_backend.cpp:31)
+ n2: 5701680 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 5701576 0x4010606: allocate (allocator.h:203)
+   n1: 5701576 0x4010606: allocate (alloc_traits.h:614)
+    n1: 5701576 0x4010606: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 5701576 0x40101EC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 5701576 0x400FB38: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 5701576 0x400E8C5: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 5701576 0x400DE1F: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 5701576 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 5701576 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+           n1: 5701576 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+            n0: 5701576 0x4002662: main (bench_book_backend.cpp:31)
+  n0: 104 in 2 places, all below massif's threshold (1.00%)
+ n0: 634776 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=60
+#-----------
+time=3376135672
+mem_heap_B=91018432
+mem_heap_extra_B=11410048
+mem_stacks_B=0
+heap_tree=detailed
+n4: 91018432 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 56000000 0x4002D82: lob::ObjectPool<lob::IntrusiveOrder>::ObjectPool(unsigned long) (pool_allocator.hpp:25)
+  n1: 56000000 0x4002CC5: lob::IntrusiveOrderBook::IntrusiveOrderBook() (order_book_intrusive.hpp:23)
+   n1: 56000000 0x4002462: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:20)
+    n0: 56000000 0x4002662: main (bench_book_backend.cpp:31)
+ n2: 17278904 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 17278800 0x4010606: allocate (allocator.h:203)
+   n1: 17278800 0x4010606: allocate (alloc_traits.h:614)
+    n1: 17278800 0x4010606: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 17278800 0x40101EC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 17278800 0x400FB38: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 17278800 0x400E8C5: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 17278800 0x400DE1F: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 17278800 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 17278800 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+           n1: 17278800 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+            n0: 17278800 0x4002662: main (bench_book_backend.cpp:31)
+  n0: 104 in 2 places, all below massif's threshold (1.00%)
+ n1: 17104752 0x4010796: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 17104752 0x400F920: allocate (allocator.h:203)
+   n1: 17104752 0x400F920: allocate (alloc_traits.h:614)
+    n1: 17104752 0x400F920: std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 17104752 0x400E7F6: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 17104752 0x400DE01: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 17104752 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 17104752 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+         n1: 17104752 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+          n0: 17104752 0x4002662: main (bench_book_backend.cpp:31)
+ n0: 634776 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=61
+#-----------
+time=3408846742
+mem_heap_B=85798200
+mem_heap_extra_B=11726848
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=3441558078
+mem_heap_B=86279544
+mem_heap_extra_B=12047744
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=3474269414
+mem_heap_B=86760888
+mem_heap_extra_B=12368640
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=3506980750
+mem_heap_B=87242232
+mem_heap_extra_B=12689536
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=3539692086
+mem_heap_B=87723576
+mem_heap_extra_B=13010432
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=3572403422
+mem_heap_B=88204920
+mem_heap_extra_B=13331328
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=3605114758
+mem_heap_B=88686264
+mem_heap_extra_B=13652224
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=3637826094
+mem_heap_B=89167608
+mem_heap_extra_B=13973120
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=3670537430
+mem_heap_B=89648952
+mem_heap_extra_B=14294016
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=3703248766
+mem_heap_B=90130296
+mem_heap_extra_B=14614912
+mem_stacks_B=0
+heap_tree=detailed
+n4: 90130296 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 56000000 0x4002D82: lob::ObjectPool<lob::IntrusiveOrder>::ObjectPool(unsigned long) (pool_allocator.hpp:25)
+  n1: 56000000 0x4002CC5: lob::IntrusiveOrderBook::IntrusiveOrderBook() (order_book_intrusive.hpp:23)
+   n1: 56000000 0x4002462: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:20)
+    n0: 56000000 0x4002662: main (bench_book_backend.cpp:31)
+ n1: 21918192 0x4010796: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 21918192 0x400F920: allocate (allocator.h:203)
+   n1: 21918192 0x400F920: allocate (alloc_traits.h:614)
+    n1: 21918192 0x400F920: std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 21918192 0x400E7F6: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 21918192 0x400DE01: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 21918192 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 21918192 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+         n1: 21918192 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+          n0: 21918192 0x4002662: main (bench_book_backend.cpp:31)
+ n2: 11577328 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 11577224 0x4010606: allocate (allocator.h:203)
+   n1: 11577224 0x4010606: allocate (alloc_traits.h:614)
+    n1: 11577224 0x4010606: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 11577224 0x40101EC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 11577224 0x400FB38: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 11577224 0x400E8C5: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 11577224 0x400DE1F: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 11577224 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 11577224 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+           n1: 11577224 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+            n0: 11577224 0x4002662: main (bench_book_backend.cpp:31)
+  n0: 104 in 2 places, all below massif's threshold (1.00%)
+ n0: 634776 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=71
+#-----------
+time=3735960102
+mem_heap_B=90611640
+mem_heap_extra_B=14935808
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=3768671438
+mem_heap_B=91092984
+mem_heap_extra_B=15256704
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=3801382774
+mem_heap_B=91574328
+mem_heap_extra_B=15577600
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=3834094110
+mem_heap_B=92055672
+mem_heap_extra_B=15898496
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=3980727245
+mem_heap_B=92212104
+mem_heap_extra_B=16002784
+mem_stacks_B=0
+heap_tree=peak
+n4: 92212104 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 56000000 0x4002D82: lob::ObjectPool<lob::IntrusiveOrder>::ObjectPool(unsigned long) (pool_allocator.hpp:25)
+  n1: 56000000 0x4002CC5: lob::IntrusiveOrderBook::IntrusiveOrderBook() (order_book_intrusive.hpp:23)
+   n1: 56000000 0x4002462: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:20)
+    n0: 56000000 0x4002662: main (bench_book_backend.cpp:31)
+ n1: 24000000 0x4010796: std::__new_allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 24000000 0x400F920: allocate (allocator.h:203)
+   n1: 24000000 0x400F920: allocate (alloc_traits.h:614)
+    n1: 24000000 0x400F920: std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable_policy.h:1551)
+     n1: 24000000 0x400E7F6: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Scoped_node::_Scoped_node<std::piecewise_construct_t const&, std::tuple<unsigned long const&>, std::tuple<> >(std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >*, std::piecewise_construct_t const&, std::tuple<unsigned long const&>&&, std::tuple<>&&) (hashtable.h:305)
+      n1: 24000000 0x400DE01: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:891)
+       n1: 24000000 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+        n1: 24000000 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+         n1: 24000000 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+          n0: 24000000 0x4002662: main (bench_book_backend.cpp:31)
+ n2: 11577328 0x400BF75: std::__new_allocator<std::__detail::_Hash_node_base*>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 11577224 0x4010606: allocate (allocator.h:203)
+   n1: 11577224 0x4010606: allocate (alloc_traits.h:614)
+    n1: 11577224 0x4010606: std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false> > >::_M_allocate_buckets(unsigned long) (hashtable_policy.h:1605)
+     n1: 11577224 0x40101EC: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_allocate_buckets(unsigned long) (hashtable.h:413)
+      n1: 11577224 0x400FB38: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, std::integral_constant<bool, true>) (hashtable.h:2754)
+       n1: 11577224 0x400E8C5: std::_Hashtable<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, lob::IntrusiveOrder*>, false>*, unsigned long) (hashtable.h:2479)
+        n1: 11577224 0x400DE1F: std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, lob::IntrusiveOrder*>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) (hashtable_policy.h:898)
+         n1: 11577224 0x400D6D2: std::unordered_map<unsigned long, lob::IntrusiveOrder*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, lob::IntrusiveOrder*> > >::operator[](unsigned long const&) (unordered_map.h:1058)
+          n1: 11577224 0x400CA58: lob::IntrusiveOrderBook::add_order(lob::Order const&) (order_book_intrusive.cpp:37)
+           n1: 11577224 0x40024CF: main::{lambda()#2}::operator()() const (bench_book_backend.cpp:23)
+            n0: 11577224 0x4002662: main (bench_book_backend.cpp:31)
+  n0: 104 in 2 places, all below massif's threshold (1.00%)
+ n0: 634776 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=76
+#-----------
+time=4013437438
+mem_heap_B=31646712
+mem_heap_extra_B=13332112
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=4046147682
+mem_heap_B=27641376
+mem_heap_extra_B=10661888
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=4078857926
+mem_heap_B=23636040
+mem_heap_extra_B=7991616
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=4111568170
+mem_heap_B=19630704
+mem_heap_extra_B=5321296
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=4144278414
+mem_heap_B=15625368
+mem_heap_extra_B=2651056
+mem_stacks_B=0
+heap_tree=empty
