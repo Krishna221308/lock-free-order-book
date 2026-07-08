@@ -13,6 +13,7 @@ namespace lob {
         public:
             IntrusiveList() = default;
             
+            // Copy Constructor and Copy assignment operator to forbid copying and overwriting
             IntrusiveList(const IntrusiveList&) = delete;
             IntrusiveList& operator=(const IntrusiveList&) = delete;
 

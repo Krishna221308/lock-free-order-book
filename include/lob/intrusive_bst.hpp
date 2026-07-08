@@ -7,12 +7,12 @@ namespace lob {
         T* left = nullptr;
         T* right = nullptr;
         T* parent = nullptr;
-    }
+    };
 
     template<typename T, typename Key, typename KeyOf>
     class IntrusiveBST {
         private:
-            T* node_ = nullptr;
+            T* root_ = nullptr;
             std::size_t size_ = 0;
 
             void replace_in_parent(T* node, T* replacement) {
@@ -94,7 +94,7 @@ namespace lob {
                     if (key < cur_key) {
                         cur = cur->left;
                     }
-                    else if (key > cur->key){
+                    else if (key > cur_key){
                         cur = cur->right;
                     } else {
                         return cur;
@@ -106,7 +106,7 @@ namespace lob {
             T* min_node() const {
                 if (root_ == nullptr) return nullptr;
                 T* cur = root_;
-                while (cur_left != nullptr) cur = cur->left;
+                while (cur->left != nullptr) cur = cur->left;
                 return cur;
             }
 
@@ -156,9 +156,9 @@ namespace lob {
                 }
                 T* child = (node->left != nullptr) ? node->left : node->right;
                 replace_in_parent(node, child);
-                node->left == nullptr;
-                node->right == nullptr;
-                node->parent == nullptr;
+                node->left = nullptr;
+                node->right = nullptr;
+                node->parent = nullptr;
                 --size_;
             }
     };

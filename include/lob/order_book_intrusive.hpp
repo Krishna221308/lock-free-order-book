@@ -1,0 +1,33 @@
+#pragma once
+#include "lob/order.hpp"
+#include "lob/intrusive_list.hpp"
+#include "lob/intrusive_bst.hpp"
+#include "lob/intrusive_order.hpp"
+#include "lob/limit.hpp"
+#include <unordered_map>
+#include <optional>
+
+namespace lob {
+    class IntrusiveOrderBook {
+        private:
+            IntrusiveBST<Limit, int64_t, LimitKeyOf> bids_;
+            IntrusiveBST<Limit, int64_t, LimitKeyOf> asks_;
+            std::unordered_map<uint64_t, IntrusiveOrder*> id_index_;
+            std::unordered_map<int64_t, Limit*> limit_index_;
+
+        public:
+            IntrusiveOrderBook() = default;
+            ~IntrusiveOrderBook();
+
+            IntrusiveOrderBook(const IntrusiveOrderBook&) = delete;
+            IntrusiveOrderBook& operator=(const IntrusiveOrderBook&) = delete;
+
+            void add_order(const Order& order);
+            void cancel_order(uint64_t id);
+            void modify_order(uint64_t id, uint32_t new_quantity);
+            void match();
+
+            std::optional<int64_t> best_bid() const;
+            std::optional<int64_t> best_ask() const;
+    };
+}
