@@ -84,7 +84,7 @@ void OrderBook::modify_order(uint64_t id, uint32_t new_quantity) {
     int64_t price = it->second.price;
     Side side = it->second.side;
     uint64_t timestamp = it->second.timestamp;
-
+    
     if (side == Side::Buy) {
         auto level_it = bids_.find(price);
         if (level_it == bids_.end()) {
@@ -92,18 +92,22 @@ void OrderBook::modify_order(uint64_t id, uint32_t new_quantity) {
             return;
         }
 
-        auto &level = level_it->second;
+        auto& level = level_it->second;
 
-        auto order_it =
-            std::find_if(level.begin(), level.end(), [id](const Order &o) {
-                return o.id == id;
-            });
+        auto order_it = std::find_if(level.begin(), level.end(), [id](const Order &o) {
+            return o.id == id;
+        });
         if (order_it == level.end()) {
             id_index_.erase(it);
             return;
         }
-        level.erase(order_it);
-        level.push_back({id, side, price, new_quantity, timestamp});
+
+        if (order_it->quantity >= new_quantity) {
+            order_it->quantity = new_quantity;
+        } else {
+            level.erase(order_it);
+            level.push_back({id, side, price, new_quantity, timestamp});
+        }
     } else {
         auto level_it = asks_.find(price);
         if (level_it == asks_.end()) {
@@ -121,8 +125,12 @@ void OrderBook::modify_order(uint64_t id, uint32_t new_quantity) {
             id_index_.erase(it);
             return;
         }
-        level.erase(order_it);
-        level.push_back({id, side, price, new_quantity, timestamp});
+        if (order_it->quantity >= new_quantity) {
+            order_it->quantity = new_quantity;
+        } else {
+            level.erase(order_it);
+            level.push_back({id, side, price, new_quantity, timestamp});
+        }
     }
 }
 
