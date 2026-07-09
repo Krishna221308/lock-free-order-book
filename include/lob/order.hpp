@@ -16,4 +16,10 @@ namespace lob {
         uint64_t timestamp;
     };
 
+    struct Trade {
+        uint64_t buy_id;
+        uint64_t sell_id;
+        int64_t price;
+        uint32_t quantity;
+    };
 }

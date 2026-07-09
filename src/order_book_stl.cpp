@@ -4,12 +4,14 @@
 namespace lob {
 
 void OrderBook::add_order(const Order &order) {
+    next_seq_++;
+    if (id_index_.count(order.id)) return;      // Duplicate id guard;
     if (order.side == Side::Buy) {
         bids_[order.price].push_back(order);
     } else if (order.side == Side::Sell) {
         asks_[order.price].push_back(order);
     }
-    id_index_[order.id] = IndexEntry{order.price, order.side, order.timestamp};
+    id_index_[order.id] = IndexEntry{order.price, order.side, next_seq_};
     // Not added a duplicate-id guard.
     // Can be implemented later tho.
 }
@@ -46,7 +48,7 @@ void OrderBook::cancel_order(uint64_t id) {
     } else {
         auto level_it = asks_.find(price);
         if (level_it == asks_.end()) {
-            id_index_.erase(id);
+            id_index_.erase(it);
             return;
         }
 
@@ -83,7 +85,6 @@ void OrderBook::modify_order(uint64_t id, uint32_t new_quantity) {
 
     int64_t price = it->second.price;
     Side side = it->second.side;
-    uint64_t timestamp = it->second.timestamp;
     
     if (side == Side::Buy) {
         auto level_it = bids_.find(price);
@@ -105,8 +106,10 @@ void OrderBook::modify_order(uint64_t id, uint32_t new_quantity) {
         if (order_it->quantity >= new_quantity) {
             order_it->quantity = new_quantity;
         } else {
+            next_seq_++;
+            it->second.sequence = next_seq_;
             level.erase(order_it);
-            level.push_back({id, side, price, new_quantity, timestamp});
+            level.push_back({id, side, price, new_quantity, next_seq_});
         }
     } else {
         auto level_it = asks_.find(price);
@@ -128,24 +131,33 @@ void OrderBook::modify_order(uint64_t id, uint32_t new_quantity) {
         if (order_it->quantity >= new_quantity) {
             order_it->quantity = new_quantity;
         } else {
+            next_seq_++;
+            it->second.sequence = next_seq_;
             level.erase(order_it);
-            level.push_back({id, side, price, new_quantity, timestamp});
+            level.push_back({id, side, price, new_quantity, next_seq_});
         }
     }
 }
 
-void OrderBook::match() {
-    while (!bids_.empty() && !asks_.empty() &&
-           (bids_.begin()->first >= asks_.begin()->first)) {
+std::vector<Trade> OrderBook::match() {
+
+    std::vector<Trade> trades;
+    while (!bids_.empty() && !asks_.empty() && (bids_.begin()->first >= asks_.begin()->first)) {
         const Order &bid_front = bids_.begin()->second.front();
         const Order &ask_front = asks_.begin()->second.front();
 
-        uint32_t trade_quantity =
-            std::min(bid_front.quantity, ask_front.quantity);
+        uint32_t trade_quantity = std::min(bid_front.quantity, ask_front.quantity);
 
+        int64_t price = (bid_front.timestamp < ask_front.timestamp) ? bid_front.price : ask_front.price;
+
+        trades.push_back({bid_front.id, ask_front.id, price, trade_quantity});
+        
         modify_order(bid_front.id, bid_front.quantity - trade_quantity);
         modify_order(ask_front.id, ask_front.quantity - trade_quantity);
+
     }
+
+    return trades;
 }
 
 std::optional<int64_t> OrderBook::best_bid() const {

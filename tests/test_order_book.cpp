@@ -11,76 +11,84 @@ void test_empty_book_add() {
     assert(!book.best_ask().has_value());
     std::cout << "test_empty_book_add passed!\n";
 }
+
 void test_cancel_non_existent() {
     OrderBook book;
-    book.cancel_order(999); // Should gracefully do nothing and not crash
+    book.cancel_order(999); 
     assert(!book.best_bid().has_value());
     std::cout << "test_cancel_non_existent passed!\n";
 }
+
 void test_exact_price_cross() {
     OrderBook book;
     book.add_order({1, Side::Buy, 100, 10, 1});
     book.add_order({2, Side::Sell, 100, 10, 2});
-    book.match();
-    // Both should be fully filled and removed
+    auto trades = book.match();
+    
+    assert(trades.size() == 1);
+    assert(trades[0].quantity == 10);
     assert(!book.best_bid().has_value());
     assert(!book.best_ask().has_value());
     std::cout << "test_exact_price_cross passed!\n";
 }
+
 void test_partial_fill() {
     OrderBook book;
     book.add_order({1, Side::Buy, 100, 10, 1});
-    book.add_order({2, Side::Sell, 99, 4, 2}); // Sells 4 at 99
-    book.match();
+    book.add_order({2, Side::Sell, 99, 4, 2}); 
+    auto trades = book.match();
     
-    // Sell order is fully filled and gone. Buy order has 6 left at 100.
+    assert(trades.size() == 1);
+    assert(trades[0].quantity == 4);
+    assert(trades[0].price == 100); // Resting order sets the price
     assert(book.best_bid() == 100);
     assert(!book.best_ask().has_value());
     std::cout << "test_partial_fill passed!\n";
 }
+
 void test_multi_fill() {
     OrderBook book;
     book.add_order({1, Side::Sell, 101, 5, 1});
     book.add_order({2, Side::Sell, 102, 5, 2});
-    
-    // Sweeps the book, buying 10 total across both asks
     book.add_order({3, Side::Buy, 105, 10, 3}); 
-    book.match();
+    auto trades = book.match();
     
-    assert(!book.best_bid().has_value()); // Buy order is fully filled
-    assert(!book.best_ask().has_value()); // Both sell orders are fully filled
+    assert(trades.size() == 2);
+    assert(trades[0].quantity == 5);
+    assert(trades[1].quantity == 5);
+    assert(!book.best_bid().has_value()); 
+    assert(!book.best_ask().has_value()); 
     std::cout << "test_multi_fill passed!\n";
 }
+
 void test_cancel_then_readd() {
     OrderBook book;
     book.add_order({1, Side::Buy, 100, 10, 1});
     book.cancel_order(1);
-    assert(!book.best_bid().has_value()); // Should be empty
+    assert(!book.best_bid().has_value()); 
     
-    book.add_order({1, Side::Buy, 100, 10, 2}); // Re-add with same ID
+    book.add_order({1, Side::Buy, 100, 10, 2}); 
     assert(book.best_bid() == 100);
     std::cout << "test_cancel_then_readd passed!\n";
 }
+
 void test_modify_order() {
     OrderBook book;
     book.add_order({1, Side::Buy, 100, 10, 1});
-    
-    // Edge case: modifying to 0 should cleanly route to your cancel logic
     book.modify_order(1, 0); 
     assert(!book.best_bid().has_value());
     
-    // Normal case: modifying quantity down
     book.add_order({2, Side::Sell, 102, 10, 2});
-    book.modify_order(2, 5); // Reduce to 5
+    book.modify_order(2, 5); 
     
-    // Cross it exactly to prove the quantity was actually reduced
     book.add_order({3, Side::Buy, 105, 5, 3});
-    book.match();
+    auto trades = book.match();
     
-    assert(!book.best_ask().has_value()); // If it was 5, it should now be 0 and removed
-    
+    assert(trades.size() == 1);
+    assert(!book.best_ask().has_value()); 
     std::cout << "test_modify_order passed!\n";
 }
+
 int main() {
     test_empty_book_add();
     test_cancel_non_existent();
