@@ -21,6 +21,7 @@ namespace lob {
             struct IndexEntry {
                 int64_t price;
                 Side side;
+                uint64_t timestamp;
             };
 
             std::map<int64_t, std::deque<Order>, std::greater<int64_t>> bids_;
