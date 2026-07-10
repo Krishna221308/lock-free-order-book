@@ -8,6 +8,7 @@ namespace lob {
     template <typename T>
     class ObjectPool {
         private:
+            // Since it is an either occ or not occ we use union to save space and storage.
             union Slot {
                 Slot* next_free;
                 alignas(T) unsigned char storage[sizeof(T)];
@@ -53,7 +54,7 @@ namespace lob {
 
             void release(T* obj) {
                 assert(obj != nullptr);
-                obj->~T();
+                obj->~T();                                  // explicitly calling the desctructor.
                 Slot* slot = reinterpret_cast<Slot*>(obj);
                 slot->next_free = free_head_;
                 free_head_ = slot;
@@ -62,10 +63,6 @@ namespace lob {
 
             std::size_t capacity() const { return capacity_; }
             std::size_t live_count() const { return live_count_; }
-            std::size_t free_count() const { return capacity_ - live_count_; }
-            
+            std::size_t free_count() const { return capacity_ - live_count_; }      
     };
-
-
-
 }

@@ -1,6 +1,16 @@
 #pragma once
 #include <cstddef>
 
+/*
+ Since we will be applying some operations we define some naming to classify the cases
+ i -> where to insert
+ o -> empty
+ x -> occupied
+ ? -> can be 'o' or 'x'
+ r -> where to remove
+ it will be of format ? ? ? showing the three cases where middle ? is generally the i
+*/
+
 namespace lob {
     template <typename T>
     struct IntrusiveListNode {
@@ -10,6 +20,11 @@ namespace lob {
 
     template <typename T>
     class IntrusiveList {
+        private:
+            T* head_ = nullptr;
+            T* tail_ = nullptr;
+            std::size_t size_ = 0;
+
         public:
             IntrusiveList() = default;
             
@@ -17,17 +32,17 @@ namespace lob {
             IntrusiveList(const IntrusiveList&) = delete;
             IntrusiveList& operator=(const IntrusiveList&) = delete;
 
-            bool empty() const { return head_ == nullptr; }
+            bool empty() const { return (head_ == nullptr && size_ == 0 && tail_ == nullptr); }     // Safety check added all 3 should be satisfied.
             T* front() const { return head_; }
             T* back() const { return tail_; }
 
-            void push_back(T* node) {
-                node->prev = tail_;
-                node->next = nullptr;
-                if (tail_ != nullptr) {
+            void push_back(T* node) {       // ? i o
+                node->prev = tail_;         
+                node->next = nullptr;       
+                if (tail_ != nullptr) {     // o i o
                     tail_->next = node;
                 }
-                else {
+                else {                      // x i o
                     head_ = node;
                 }
                 tail_ = node;
@@ -35,42 +50,42 @@ namespace lob {
             }
 
             void insert_after(T* pos, T*node) {
-                if (pos == nullptr) {
+                if (pos == nullptr) {               // o i ?
                     node->prev = nullptr;
                     node->next = head_;
-                    if (head_ != nullptr) {
+                    if (head_ != nullptr) {         // o i x
                         head_->prev = node;
-                    } else {
-                        tail_ = node;
+                    } else {                        // o i o
+                        tail_ = node;   
                     }
                     head_ = node;
                 }
-                else {
+                else {                              // x i ?
                     node->prev = pos;
                     node->next = pos->next;
                     pos->next = node;
-                    if (node->next == nullptr) {
+                    if (node->next == nullptr) {    // x i o
                         tail_ = node;
                     } 
-                    else {
+                    else {                          // x i x
                         node->next->prev = node;
                     }
                 }
                 ++size_;
             }
 
-            void remove(T* node) {
-                if (node->prev == nullptr) {
+            void remove(T* node) {                  // ? r ?
+                if (node->prev == nullptr) {        // o r ?
                     head_ = node->next;
                 }
-                else {
+                else {                              // x r ?
                     node->prev->next = node->next;
                 }
 
-                if (node->next == nullptr) {
+                if (node->next == nullptr) {        // ? r o
                     tail_ = node->prev;
                 }
-                else {
+                else {                              // ? r x
                     node->next->prev = node->prev;
                 }
                 node->prev = nullptr;
@@ -114,9 +129,5 @@ namespace lob {
             reverse_iterator rbegin() const { return reverse_iterator(tail_); }
             reverse_iterator rend() const { return reverse_iterator(nullptr); }
 
-        private:
-            T* head_ = nullptr;
-            T* tail_ = nullptr;
-            std::size_t size_ = 0;
     };
 }

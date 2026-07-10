@@ -9,6 +9,7 @@ namespace lob {
         T* parent = nullptr;
     };
 
+    // <Limit, price, LimitKeyOf>
     template<typename T, typename Key, typename KeyOf>
     class IntrusiveBST {
         private:
@@ -51,7 +52,7 @@ namespace lob {
             IntrusiveBST(const IntrusiveBST&) = delete;
             IntrusiveBST& operator=(const IntrusiveBST&) = delete;
 
-            bool empty() const { return root_ == nullptr; }
+            bool empty() const { return (root_ == nullptr && size_ == 0); }
             std::size_t size() const { return size_; }
 
             void insert(T* node) {
@@ -149,10 +150,12 @@ namespace lob {
             }
 
             void remove(T* node) {
+                // When both child are there.
                 if (node->left != nullptr && node->right != nullptr) {
                     T* succ = successor(node);
                     transplant_value_holder(node, succ);
                 }
+                // When only one or none are there.
                 else {
                     T* child = (node->left != nullptr) ? node->left : node->right;
                     replace_in_parent(node, child);

@@ -8,8 +8,12 @@ namespace lob {
     }
 
     void IntrusiveOrderBook::add_order(const Order& order) {
+        if (id_index_.find(order.id) != id_index_.end()) return;
+
         Limit* limit = nullptr;
         auto limit_it = limit_index_.find(order.price);
+
+        next_seq_++;
 
         if (limit_it != limit_index_.end()) {
             limit = limit_it->second;
@@ -31,7 +35,7 @@ namespace lob {
         intrusive_order->side = order.side;
         intrusive_order->price = order.price;
         intrusive_order->quantity = order.quantity;
-        intrusive_order->timestamp = order.timestamp;
+        intrusive_order->timestamp = next_seq_;
 
         limit->orders.push_back(intrusive_order);
         id_index_[order.id] = intrusive_order;
@@ -67,6 +71,14 @@ namespace lob {
         if (it == id_index_.end()) return;
 
         IntrusiveOrder* intrusive_order = it->second;
+        next_seq_++;
+        intrusive_order->timestamp = next_seq_;
+
+        if (intrusive_order->quantity >= new_quantity) {
+            intrusive_order->quantity = new_quantity;
+            return;
+        }
+
         intrusive_order->quantity = new_quantity;
 
         // It loses time priority due to modification.
@@ -75,24 +87,31 @@ namespace lob {
         limit->orders.push_back(intrusive_order);
     }
 
-    void IntrusiveOrderBook::match() {
+    std::vector<Trade> IntrusiveOrderBook::match() {
+        std::vector<Trade> trades_intrusive;
+
         while (!bids_.empty() && !asks_.empty()) {
             Limit* best_bid_limit = bids_.max_node();
             Limit* best_ask_limit = asks_.min_node();
             
-            if (best_bid_limit < best_ask_limit) break;
+            if (best_bid_limit->price < best_ask_limit->price) break;
 
             IntrusiveOrder* bid_order = best_bid_limit->orders.front();
             IntrusiveOrder* ask_order = best_ask_limit->orders.front();
 
             uint32_t traded = std::min(bid_order->quantity, ask_order->quantity);
             
+            int64_t price = (bid_order->timestamp < ask_order->timestamp) ? bid_order->price : ask_order->price;
+            trades_intrusive.push_back({bid_order->id, ask_order->id, price, traded});
+
             bid_order->quantity -= traded;
             ask_order->quantity -= traded;
 
             if (bid_order->quantity == 0) cancel_order(bid_order->id);
-            else cancel_order(ask_order->id);
+            if (ask_order->quantity == 0) cancel_order(ask_order->id);          // What if there is an exact match
         }
+
+        return trades_intrusive;
     }
 
     std::optional<int64_t> IntrusiveOrderBook::best_bid() const {
