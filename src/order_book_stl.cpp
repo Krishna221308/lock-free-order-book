@@ -6,10 +6,12 @@ namespace lob {
 void OrderBook::add_order(const Order &order) {
     next_seq_++;
     if (id_index_.count(order.id)) return;      // Duplicate id guard;
+    Order custom = order;
+    custom.timestamp = next_seq_;
     if (order.side == Side::Buy) {
-        bids_[order.price].push_back(order);
+        bids_[order.price].push_back(custom);
     } else if (order.side == Side::Sell) {
-        asks_[order.price].push_back(order);
+        asks_[order.price].push_back(custom);
     }
     id_index_[order.id] = IndexEntry{order.price, order.side, next_seq_};
     // Not added a duplicate-id guard.

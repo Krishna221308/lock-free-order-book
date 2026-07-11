@@ -71,14 +71,13 @@ namespace lob {
         if (it == id_index_.end()) return;
 
         IntrusiveOrder* intrusive_order = it->second;
-        next_seq_++;
-        intrusive_order->timestamp = next_seq_;
-
         if (intrusive_order->quantity >= new_quantity) {
             intrusive_order->quantity = new_quantity;
             return;
         }
 
+        next_seq_++;
+        intrusive_order->timestamp = next_seq_;
         intrusive_order->quantity = new_quantity;
 
         // It loses time priority due to modification.
