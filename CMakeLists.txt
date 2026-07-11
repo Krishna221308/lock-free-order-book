@@ -32,3 +32,14 @@ add_test(NAME intrusive_bst COMMAND test_intrusive_bst)
 
 add_executable(bench_book_backend bench/bench_book_backend.cpp)
 target_link_libraries(bench_book_backend PRIVATE lob_book_stl lob_book_intrusive)
+
+# ---------- Phase 2: Stage 2 ----------
+add_library(lob_itch_parser src/itch_parser.cpp)
+target_link_libraries(lob_itch_parser PUBLIC lob_book_stl)
+
+add_executable(stage2_demo apps/stage2_itch_replay.cpp)
+target_link_libraries(stage2_demo PRIVATE lob_itch_parser)
+
+add_executable(test_itch_parser tests/test_itch_parser.cpp)
+target_link_libraries(test_itch_parser PRIVATE lob_itch_parser)
+add_test(NAME itch_parser COMMAND test_itch_parser)
