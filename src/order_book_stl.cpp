@@ -182,7 +182,7 @@ void OrderBook::execute_order(uint64_t id, uint32_t executed_quantity) {
         if (executed_quantity >= order_it->quantity) {
             level.erase(order_it);
             if (level.empty()) {
-                asks_.erase(level_it);
+                bids_.erase(level_it);
             }
             id_index_.erase(it);
         } else {
@@ -201,7 +201,7 @@ void OrderBook::execute_order(uint64_t id, uint32_t executed_quantity) {
         if (executed_quantity >= order_it->quantity) {
             level.erase(order_it);
             if (level.empty()) {
-                bids_.erase(level_it);
+                asks_.erase(level_it);
             }
             id_index_.erase(it);
         } else {
