@@ -53,7 +53,7 @@ namespace lob {
                     msg.executed_shares = to_uint32_be(buffer.data() + 18);
                     msg.match_number = to_uint64_be(buffer.data() + 22);
                     
-                    
+                    book.execute_order(msg.order_reference_id, msg.executed_shares);
 
                     break;
                 }

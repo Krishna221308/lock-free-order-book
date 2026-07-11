@@ -162,6 +162,54 @@ std::vector<Trade> OrderBook::match() {
     return trades;
 }
 
+void OrderBook::execute_order(uint64_t id, uint32_t executed_quantity) {
+    auto it = id_index_.find(id);
+    if (it == id_index_.end()) return;
+
+    int64_t price = it->second.price;
+    Side side = it->second.side;
+
+    if (side == Side::Buy) {
+        auto level_it = bids_.find(price);
+        if (level_it == bids_.end()) return;
+
+        auto &level = level_it->second;
+        auto order_it = std::find_if(level.begin(), level.end(), [id](const Order &o) {
+            return o.id == id;
+        });
+        if (order_it == level.end()) return;
+
+        if (executed_quantity >= order_it->quantity) {
+            level.erase(order_it);
+            if (level.empty()) {
+                asks_.erase(level_it);
+            }
+            id_index_.erase(it);
+        } else {
+            order_it->quantity -= executed_quantity;
+        }
+    } else {
+        auto level_it = asks_.find(price);
+        if (level_it == asks_.end()) return;
+
+        auto &level = level_it->second;
+        auto order_it = std::find_if(level.begin(), level.end(), [id](const Order &o) {
+            return o.id == id;
+        });
+        if (order_it == level.end()) return;
+
+        if (executed_quantity >= order_it->quantity) {
+            level.erase(order_it);
+            if (level.empty()) {
+                bids_.erase(level_it);
+            }
+            id_index_.erase(it);
+        } else {
+            order_it->quantity -= executed_quantity;
+        }
+    }
+}
+
 std::optional<int64_t> OrderBook::best_bid() const {
     if (bids_.empty()) {
         return std::nullopt;

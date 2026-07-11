@@ -13,6 +13,7 @@ namespace lob {
             void add_order(const Order& order);
             void cancel_order(uint64_t id);
             void modify_order(uint64_t id, uint32_t new_quantity);
+            void execute_order(uint64_t id, uint32_t executed_quantity);
             std::vector<Trade> match();
 
             std::optional<int64_t> best_bid() const;

@@ -113,6 +113,19 @@ namespace lob {
         return trades_intrusive;
     }
 
+    void IntrusiveOrderBook::execute_order(uint64_t id, uint32_t executed_quantity) {
+        auto it = id_index_.find(id);
+        if (it == id_index_.end()) return;
+
+        IntrusiveOrder* intrusive_order = it->second;
+        if (intrusive_order->quantity <= executed_quantity) {
+            cancel_order(id);
+            return;
+        }
+        
+        intrusive_order->quantity -= executed_quantity;
+    }
+
     std::optional<int64_t> IntrusiveOrderBook::best_bid() const {
         Limit* max_bid = bids_.max_node();
         if (max_bid != nullptr) return max_bid->price;
