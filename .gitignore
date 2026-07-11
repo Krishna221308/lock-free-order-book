@@ -5,3 +5,5 @@ build-release/
 # OS generated files
 .DS_Store
 massif.out.3945
+# data
+data/
