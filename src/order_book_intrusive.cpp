@@ -4,14 +4,16 @@
 namespace lob {
     IntrusiveOrderBook::~IntrusiveOrderBook() {
         for (auto& pair : id_index_) order_pool_.release(pair.second);
-        for (auto& pair : limit_index_) limit_pool_.release(pair.second);
+        for (auto& pair : bid_limit_index_) limit_pool_.release(pair.second);
+        for (auto& pair : ask_limit_index_) limit_pool_.release(pair.second);
     }
 
     void IntrusiveOrderBook::add_order(const Order& order) {
         if (id_index_.find(order.id) != id_index_.end()) return;
 
         Limit* limit = nullptr;
-        auto limit_it = limit_index_.find(order.price);
+        auto limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
+        auto limit_it = limit_index.find(order.price);
 
         next_seq_++;
 
@@ -21,7 +23,7 @@ namespace lob {
         else {
             limit = limit_pool_.acquire();
             limit->price = order.price;
-            limit_index_[order.price] = limit;
+            limit_index[order.price] = limit;
 
             if (order.side == Side::Buy) {
                 bids_.insert(limit);
@@ -46,7 +48,8 @@ namespace lob {
         if (it == id_index_.end()) return;
 
         IntrusiveOrder* intrusive_order = it->second;
-        Limit* limit = limit_index_[intrusive_order->price];
+        auto& limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
+        Limit* limit = limit_index[intrusive_order->price];
         Side order_side = intrusive_order->side;
 
         limit->orders.remove(intrusive_order);
@@ -56,7 +59,7 @@ namespace lob {
         if (limit->orders.empty()) {
             if (order_side == Side::Buy) bids_.remove(limit);
             else asks_.remove(limit);
-            limit_index_.erase(limit->price);
+            limit_index.erase(limit->price);
             limit_pool_.release(limit);
         }
     }
@@ -81,7 +84,9 @@ namespace lob {
         intrusive_order->quantity = new_quantity;
 
         // It loses time priority due to modification.
-        Limit* limit = limit_index_[intrusive_order->price];
+        Side order_side = intrusive_order->side;
+        auto& limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
+        Limit* limit = limit_index[intrusive_order->price];
         limit->orders.remove(intrusive_order);
         limit->orders.push_back(intrusive_order);
     }
