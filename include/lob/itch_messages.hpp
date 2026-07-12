@@ -34,4 +34,11 @@ namespace lob {
         uint64_t timestamp;
         uint64_t order_reference_id;
     };
+
+    struct ParsedMessage {
+        MessageType type = MessageType::END_OF_FILE;
+        AddOrderMessage add{};
+        ExecuteOrderMessage execute{};
+        DeleteOrderMessage del{};
+    };
 }

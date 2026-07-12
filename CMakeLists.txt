@@ -43,3 +43,10 @@ target_link_libraries(stage2_demo PRIVATE lob_itch_parser)
 add_executable(test_itch_parser tests/test_itch_parser.cpp)
 target_link_libraries(test_itch_parser PRIVATE lob_itch_parser)
 add_test(NAME itch_parser COMMAND test_itch_parser)
+
+# ---------- Phase 3: Stage 3 ----------
+add_executable(test_mutex_queue tests/test_mutex_queue.cpp)
+add_test(NAME mutex_queue COMMAND test_mutex_queue)
+
+add_executable(stage3_demo apps/stage3_threaded_replay.cpp)
+target_link_libraries(stage3_demo PRIVATE lob_itch_parser)
