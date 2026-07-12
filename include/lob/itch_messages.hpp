@@ -5,7 +5,8 @@ namespace lob {
     enum class MessageType : uint8_t {
         ADD = 'A',
         EXECUTE = 'E',
-        DELETE = 'D'
+        DELETE = 'D',
+        END_OF_FILE = 0
     };
 
     struct AddOrderMessage {

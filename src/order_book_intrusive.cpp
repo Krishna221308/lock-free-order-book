@@ -12,12 +12,12 @@ namespace lob {
         if (id_index_.find(order.id) != id_index_.end()) return;
 
         Limit* limit = nullptr;
-        auto limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
+        auto& limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
         auto limit_it = limit_index.find(order.price);
 
         next_seq_++;
 
-        if (limit_it != limit_index_.end()) {
+        if (limit_it != limit_index.end()) {
             limit = limit_it->second;
         }
         else {
@@ -48,7 +48,7 @@ namespace lob {
         if (it == id_index_.end()) return;
 
         IntrusiveOrder* intrusive_order = it->second;
-        auto& limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
+        auto& limit_index = (intrusive_order->side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
         Limit* limit = limit_index[intrusive_order->price];
         Side order_side = intrusive_order->side;
 
@@ -85,7 +85,7 @@ namespace lob {
 
         // It loses time priority due to modification.
         Side order_side = intrusive_order->side;
-        auto& limit_index = (order.side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
+        auto& limit_index = (order_side == Side::Buy) ? bid_limit_index_ : ask_limit_index_;
         Limit* limit = limit_index[intrusive_order->price];
         limit->orders.remove(intrusive_order);
         limit->orders.push_back(intrusive_order);

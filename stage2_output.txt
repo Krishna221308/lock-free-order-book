@@ -1,0 +1,6 @@
+Starting ITCH replay of data/sample.itch...
+Replay complete!
+
+--- Final Book State ---
+Best Bid: [Empty]
+Best Ask: 1505000

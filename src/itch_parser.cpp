@@ -137,7 +137,7 @@ namespace lob {
                         out.type = MessageType::END_OF_FILE;
                         return 0;
                     }
-                    file.ignore(size - 1);
+                    file_.ignore(size - 1);
                     break;
                 }
             }
@@ -150,25 +150,25 @@ namespace lob {
         switch(msg.type) {
             case MessageType::ADD : {
                 const auto& m = msg.add;
-                Side side = (m.buy_sell_indicator = 'B') ? Side::Buy : Side::Sell;
+                Side side = (m.buy_sell_indicator == 'B') ? Side::Buy : Side::Sell;
                 Order new_order {
                     m.order_reference_id,
                     side,
-                    static_cast<init64_t>(m.price),
+                    static_cast<int64_t>(m.price),
                     m.shares,
                     0
                 };
                 book.add_order(new_order);
                 break;
             }
-            case MessageType::Execute : {
+            case MessageType::EXECUTE : {
                 const auto& m = msg.execute;
                 book.execute_order(m.order_reference_id, m.executed_shares);
                 break;
             }
-            case MessageType::Delete : {
+            case MessageType::DELETE : {
                 const auto&m = msg.del;
-                book.canel_order(m.order_reference_id);
+                book.cancel_order(m.order_reference_id);
                 break;
             }
             case MessageType::END_OF_FILE : {

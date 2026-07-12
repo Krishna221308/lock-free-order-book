@@ -45,8 +45,14 @@ target_link_libraries(test_itch_parser PRIVATE lob_itch_parser)
 add_test(NAME itch_parser COMMAND test_itch_parser)
 
 # ---------- Phase 3: Stage 3 ----------
+find_package(Threads REQUIRED)
+
+# mutex_queue.hpp is header-only, so test_mutex_queue only needs
+# Threads (for std::thread) — no link against lob_itch_parser.
 add_executable(test_mutex_queue tests/test_mutex_queue.cpp)
+target_link_libraries(test_mutex_queue PRIVATE Threads::Threads)
 add_test(NAME mutex_queue COMMAND test_mutex_queue)
 
+# stage3_demo reuses the parser + book from Stage 2, plus threading.
 add_executable(stage3_demo apps/stage3_threaded_replay.cpp)
-target_link_libraries(stage3_demo PRIVATE lob_itch_parser)
+target_link_libraries(stage3_demo PRIVATE lob_itch_parser Threads::Threads)
