@@ -66,3 +66,7 @@ add_test(NAME ring_buffer COMMAND test_ring_buffer)
 # stage4_demo: same itch parser + book as Stage 2/3, but lock-free queue.
 add_executable(stage4_demo apps/stage4_lockfree_replay.cpp)
 target_link_libraries(stage4_demo PRIVATE lob_itch_parser Threads::Threads)
+
+# ---------- Phase 5: Stage 5 ----------
+add_executable(bench_queue bench/bench_queue.cpp)
+target_link_libraries(bench_queue PRIVATE Threads::Threads)
