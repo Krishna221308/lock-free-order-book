@@ -28,12 +28,14 @@ void bench_mutex_queue() {
         for (int i = 0; i < ROUNDS; ++i) {
             q.push(i);
         }
+        q.close();
     });
 
-    while (auto val = q.pop()) {
+    while (true) {
         auto start = Clock::now();
-        (void)val;
+        auto val = q.pop();
         auto end = Clock::now();
+        if (!val) break;
         latencies.push_back(std::chrono::duration_cast<Ns>(end - start).count());
     }
 
