@@ -56,3 +56,13 @@ add_test(NAME mutex_queue COMMAND test_mutex_queue)
 # stage3_demo reuses the parser + book from Stage 2, plus threading.
 add_executable(stage3_demo apps/stage3_threaded_replay.cpp)
 target_link_libraries(stage3_demo PRIVATE lob_itch_parser Threads::Threads)
+
+# ---------- Phase 4: Stage 4 ----------
+# ring_buffer.hpp is header-only; tests/stage4 only need Threads for std::thread.
+add_executable(test_ring_buffer tests/test_ring_buffer.cpp)
+target_link_libraries(test_ring_buffer PRIVATE Threads::Threads)
+add_test(NAME ring_buffer COMMAND test_ring_buffer)
+
+# stage4_demo: same itch parser + book as Stage 2/3, but lock-free queue.
+add_executable(stage4_demo apps/stage4_lockfree_replay.cpp)
+target_link_libraries(stage4_demo PRIVATE lob_itch_parser Threads::Threads)

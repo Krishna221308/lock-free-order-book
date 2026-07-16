@@ -1,39 +1,55 @@
 #include <iostream>
 #include <thread>
+#include <memory>
 
 #include "lob/itch_parser.hpp"
-#include "lob/mutex_queue.hpp"
 #include "lob/order_book.hpp"
+#include "lob/ring_buffer.hpp"
 
 using namespace lob;
 
+static constexpr std::size_t BUFFER_SIZE = 1 << 16;
+
+static bool is_eof(const ParsedMessage& m) {
+    return m.type == MessageType::END_OF_FILE;
+}
+
 int main() {
-    MutexQueue<ParsedMessage> queue;
+    auto rb = std::make_unique<RingBuffer<ParsedMessage, BUFFER_SIZE>>();
     OrderBook book;
 
-    // Thread A: parse only, push each message. When the parser is
-    // exhausted, close() the queue instead of pushing a sentinel —
-    // that's the signal to the consumer that nothing more is coming.
-    std::thread producer([&queue]() {
+    std::thread producer([&rb]() {
         ItchParser parser("data/sample.itch");
         ParsedMessage msg;
+
         while (parser.next(msg)) {
-            queue.push(msg);
+            while (!rb->emplace(msg)) {
+                std::this_thread::yield();
+            }
         }
-        queue.close();
+
+        ParsedMessage eof_msg;
+        eof_msg.type = MessageType::END_OF_FILE;
+        while (!rb->emplace(eof_msg)) {
+            std::this_thread::yield();
+        }
     });
 
-    // Thread B: apply only, stop when pop() returns nullopt —
-    // meaning the queue is both closed AND fully drained.
-    std::thread consumer([&queue, &book]() {
-        while (auto msg = queue.pop()) {
+    std::thread consumer([&rb, &book]() {
+        while (true) {
+            auto msg = rb->pop();
+            if (!msg) {
+                std::this_thread::yield();
+                continue;
+            }
+            if (is_eof(*msg)) break;
             apply_to_book(*msg, book);
         }
     });
 
     producer.join();
     consumer.join();
-    
+
     std::cout << "Starting ITCH replay of data/sample.itch...\n";
     std::cout << "Replay complete!\n\n";
 
@@ -52,5 +68,6 @@ int main() {
     } else {
         std::cout << "Best Ask: [Empty]\n";
     }
+
     return 0;
 }
